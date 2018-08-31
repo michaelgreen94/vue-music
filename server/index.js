@@ -12,9 +12,9 @@ server.use(bp.urlencoded({
   extended: true
 }))
 
-let songRoutes = require('./server assets/routes/songs')
+let songRoutes = require('./server assets/routes/playlists')
 
-server.use('/api', songRoutes)
+server.use('/api/playlists', songRoutes)
 
 server.use('/api/*', (err, req, res, next) => {
   res.status(400).send(err)
@@ -22,4 +22,8 @@ server.use('/api/*', (err, req, res, next) => {
 
 server.use('*', (req, res, next) => {
   res.status(404).send('Not Today')
+})
+
+server.listen(port, () => {
+  console.log('Port recieved and listening')
 })
