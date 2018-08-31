@@ -38,3 +38,5 @@ router.delete('/:id', (req, res, next) => {
       message: 'Delorted'
     }))
 })
+
+module.exports = router
