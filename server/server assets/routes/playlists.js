@@ -19,6 +19,16 @@ router.get('/:id', (req, res, next) => {
     .catch(next)
 })
 
+//get specific song off playlist
+router.get('/:playlistId/song/:songId', (req, res, next) => {
+  Playlist.findById(req.params.playlistId)
+    .then(playlist => {
+      let song = playlist.songs.id(req.params.songId)
+      return res.send(song)
+    })
+    .catch(next)
+})
+
 //add a playlist
 router.post('/', (req, res, next) => {
   Playlist.create(req.body)
