@@ -1,6 +1,7 @@
 let router = require('express').Router()
 let Playlist = require('../models/playlist')
 
+//get all playlists
 router.get('/', (req, res, next) => {
   Playlist.find({})
     .then(playlists => {
@@ -9,6 +10,7 @@ router.get('/', (req, res, next) => {
     .catch(next)
 })
 
+//get specific playlist
 router.get('/:id', (req, res, next) => {
   Playlist.findById(req.params.id)
     .then(playlist => {
@@ -17,6 +19,7 @@ router.get('/:id', (req, res, next) => {
     .catch(next)
 })
 
+//add a playlist
 router.post('/', (req, res, next) => {
   Playlist.create(req.body)
     .then(playlist => {
@@ -25,16 +28,31 @@ router.post('/', (req, res, next) => {
     .catch(next)
 })
 
+//add a soong to specific playlist
 router.post('/:id', (req, res, next) => {
   Playlist.findById(req.params.id)
     .then(playlist => {
       playlist.songs.push(req.body)
-      //playlist.songs.id(someSongId).remove()
+      playlist.save(playlist)
       res.send(playlist)
     })
     .catch(next)
 })
 
+//remove a song from a specific playlist
+router.delete('/:playlistId/song/:songId', (req, res, next) => {
+  Playlist.findById(req.params.playlistId)
+    .then(playlist => {
+      playlist.songs.id(req.params.songId).remove()
+      playlist.save(playlist)
+      res.send(playlist)
+    })
+    .catch(next)
+})
+
+//playlist.songs.id(someSongId).remove()
+
+//makes change to specific playlist
 router.put('/:id', (req, res, next) => {
   Playlist.findByIdAndUpdate(req.params.id, req.body)
     .then(() => res.send({
@@ -42,6 +60,7 @@ router.put('/:id', (req, res, next) => {
     }))
 })
 
+//deletes specific playlist
 router.delete('/:id', (req, res, next) => {
   Playlist.findByIdAndRemove(req.params.id)
     .then(() => res.send({
