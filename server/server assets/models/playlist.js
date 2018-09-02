@@ -7,7 +7,7 @@ let songSchema = new Schema({
   trackName: { type: String, required: true },
   albumArt: { type: String, required: true },
   artistName: { type: String, required: true },
-  collection: { type: String, required: true },
+  album: { type: String, required: true },
   previewUrl: { type: String, required: true }
 
 })
