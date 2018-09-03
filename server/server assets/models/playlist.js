@@ -5,9 +5,9 @@ let schemaName = 'Playlist'
 let songSchema = new Schema({
   //what to keep on a song
   trackName: { type: String, required: true },
-  albumArt: { type: String, required: true },
+  artworkUrl60: { type: String, required: true },
   artistName: { type: String, required: true },
-  album: { type: String, required: true },
+  collectionName: { type: String, required: true },
   previewUrl: { type: String, required: true }
 
 })

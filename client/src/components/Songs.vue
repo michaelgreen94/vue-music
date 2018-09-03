@@ -1,13 +1,13 @@
 <template>
   <div class="songs">
     <h1>Songs here</h1>
-    <div class="song-results" v-for="song in songs" :key="song.id">
+    <div class="song-results" v-for="song in songs">
       <h4>Artist: {{song.artistName}}</h4>
-      <h4>Song Name: {{song.trackName}}</h4>
+      <h4>Track: {{song.trackName}}</h4>
+      <h4>Album: {{song.collectionName}}</h4>
       <img :src="song.artworkUrl60" alt="">
-      <audio controls>
-        <source v-bind:src="song.previewUrl" type="audio/ogg" @click="currentSong()">
-      </audio>
+      <audio controls :src="song.previewUrl" />
+      <button @click="addToPlaylist(song)">Add to Playlist</button>
     </div>
   </div>
 </template>
@@ -17,7 +17,7 @@
     name: "Songs",
     data() {
       return {
-        activeSong: {}
+        activeSong: { songId: "" }
       }
     },
     computed: {
@@ -25,9 +25,12 @@
         return this.$store.state.songs
       }
     },
-    method: {
-      currentSong() {
-        activeSong = 
+    methods: {
+      currentSong(id) {
+        this.activeSong.songId = id
+      },
+      addToPlaylist(song) {
+        this.$store.dispatch('addToPlaylist', song)
       }
     }
   }

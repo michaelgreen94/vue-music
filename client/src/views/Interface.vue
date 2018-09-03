@@ -20,6 +20,9 @@
 
   export default {
     name: 'Interface',
+    beforeMount() {
+      this.getPlaylists()
+    },
     data() {
       return {
         details: ""
@@ -28,6 +31,9 @@
     methods: {
       findSongs() {
         this.$store.dispatch('findSongs', this.details)
+      },
+      getPlaylists() {
+        this.$store.dispatch('getPlaylists')
       }
     },
     components: {
