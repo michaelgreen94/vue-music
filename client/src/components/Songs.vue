@@ -6,7 +6,7 @@
       <h4>Song Name: {{song.trackName}}</h4>
       <img :src="song.artworkUrl60" alt="">
       <audio controls>
-        <source v-bind:src="song.previewUrl" type="audio/ogg" @click="currentSong">
+        <source v-bind:src="song.previewUrl" type="audio/ogg" @click="currentSong()">
       </audio>
     </div>
   </div>
@@ -23,6 +23,11 @@
     computed: {
       songs() {
         return this.$store.state.songs
+      }
+    },
+    method: {
+      currentSong() {
+        activeSong = 
       }
     }
   }
