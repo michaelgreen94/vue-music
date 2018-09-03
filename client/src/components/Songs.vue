@@ -6,7 +6,7 @@
       <h4>Song Name: {{song.trackName}}</h4>
       <img :src="song.artworkUrl60" alt="">
       <audio controls>
-        <source :src="song.previewUrl" type="audio/ogg">
+        <source v-bind:src="song.previewUrl" type="audio/ogg" @click="currentSong">
       </audio>
     </div>
   </div>
@@ -15,6 +15,11 @@
 <script>
   export default {
     name: "Songs",
+    data() {
+      return {
+        activeSong: {}
+      }
+    },
     computed: {
       songs() {
         return this.$store.state.songs
@@ -24,4 +29,7 @@
 </script>
 
 <style>
+  .song-results {
+    border: 1px solid black;
+  }
 </style>
