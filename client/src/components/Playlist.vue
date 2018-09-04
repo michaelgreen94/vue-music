@@ -13,7 +13,7 @@
       <h4>Track: {{song.trackName}}</h4>
       <h4>Album: {{song.collectionName}}</h4>
       <img :src="song.artworkUrl60" alt="">
-      <audio controls :src="song.previewUrl" />
+      <audio controls :src="song.previewUrl" @play="pauseEm(song.previewUrl)" />
       <button @click="deleteFromPlaylist(song._id)">Delete</button>
     </div>
     <div class="all-playlists" v-for="playlist in playlists">
@@ -55,6 +55,16 @@
       },
       deleteFromPlaylist(songId) {
         this.$store.dispatch('deleteFromPlaylist', songId)
+      },
+      pauseEm(Url) {
+        let songs = document.getElementsByTagName('audio')
+        for (let i = 0; i < songs.length; i++) {
+          let song = songs[i]
+          console.log(song)
+          if (song.src != Url) {
+            song.pause()
+          }
+        }
       }
     }
   }
