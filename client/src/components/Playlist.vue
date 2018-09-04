@@ -17,7 +17,6 @@
       <button @click="deleteFromPlaylist(song._id)">Delete</button>
     </div>
     <div class="all-playlists" v-for="playlist in playlists">
-      <h2>{{playlist.ownerName}}</h2>
       <h4>{{playlist.title}}</h4>
       <button @click="selectPlaylist(playlist._id)">Select Playlist</button>
       <button @click="deletePlaylist(playlist._id)">Delete</button>
@@ -46,6 +45,7 @@
     methods: {
       createPlaylist() {
         this.$store.dispatch('createPlaylist', this.playlistParams)
+        this.playlistParams = {}
       },
       selectPlaylist(playlistId) {
         this.$store.dispatch('getPlaylist', playlistId)
@@ -63,5 +63,6 @@
 <style>
   .all-playlists {
     border: 1px solid black;
+    background: linear-gradient(to top, grey, darkgrey, white);
   }
 </style>

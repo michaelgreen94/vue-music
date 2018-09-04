@@ -50,7 +50,7 @@
     justify-content: space-around;
     display: flex;
     align-items: center;
-    height: 100%;
+    height: 100vh;
   }
 
   .header {
