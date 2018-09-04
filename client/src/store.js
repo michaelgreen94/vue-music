@@ -73,14 +73,14 @@ export default new Vuex.Store({
     addToPlaylist({ commit, dispatch, state }, song) {
       serverApi.post('/' + state.playlist._id, song)
         .then(res => {
-          dispatch('getPlaylist', res.data)
+          dispatch('getPlaylist', state.playlist._id)
         })
     },
     //deletes selected song from active playlist 
     deleteFromPlaylist({ commit, dispatch, state }, songId) {
       serverApi.delete('/' + state.playlist._id + '/song/' + songId)
         .then(res => {
-          dispatch('getPlaylist', res.data)
+          dispatch('getPlaylist', state.playlist._id)
         })
     }
   }
