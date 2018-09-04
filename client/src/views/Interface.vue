@@ -46,7 +46,7 @@
 <style>
   .display {
     width: 100%;
-    justify-content: space-between;
+    justify-content: space-around;
     display: flex;
   }
 </style>

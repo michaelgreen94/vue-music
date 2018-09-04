@@ -12,6 +12,7 @@
   </div>
 </template>
 
+
 <script>
   export default {
     name: "Songs",
@@ -37,7 +38,27 @@
 </script>
 
 <style>
-  .song-results {
-    border: 1px solid black;
+  .songs {
+    height: 40rem;
+    width: 35rem;
+    overflow: auto;
+    background: linear-gradient(to top, grey, darkgrey, white);
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: grey;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, .3)
+  }
+
+  ::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, .3)
   }
 </style>

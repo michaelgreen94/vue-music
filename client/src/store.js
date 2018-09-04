@@ -33,6 +33,7 @@ export default new Vuex.Store({
     }
   },
   actions: {
+    //gets songs from API
     findSongs({ commit, dispatch }, details) {
       songApi.get(details)
         .then(res => {
@@ -40,33 +41,44 @@ export default new Vuex.Store({
           commit('displaySongs', songs)
         })
     },
+    //creates a new playlist
     createPlaylist({ commit, dispatch }, params) {
-      // debugger
       serverApi.post('/', params)
         .then(res => {
           dispatch('getPlaylists')
         })
     },
+    //gets the list of playlists
     getPlaylists({ commit, dispatch }) {
       serverApi.get('/')
         .then(res => {
           commit('allPlaylists', res.data)
         })
     },
+    //gets the active playlist (the one thats selected to view by user)
     getPlaylist({ commit, dispatch }, playlistId) {
       serverApi.get('/' + playlistId)
         .then(res => {
           commit('selectedPlaylist', res.data)
         })
     },
+    //this ones obvious, deletes playlist
     deletePlaylist({ commit, dispatch }, playlistId) {
       serverApi.delete('/' + playlistId)
         .then(res => {
           dispatch('getPlaylists', res.data)
         })
     },
+    //adds song to selected playlist
     addToPlaylist({ commit, dispatch, state }, song) {
       serverApi.post('/' + state.playlist._id, song)
+        .then(res => {
+          dispatch('getPlaylist', res.data)
+        })
+    },
+    //deletes selected song from active playlist 
+    deleteFromPlaylist({ commit, dispatch, state }, songId) {
+      serverApi.delete('/' + state.playlist._id + '/song/' + songId)
         .then(res => {
           dispatch('getPlaylist', res.data)
         })

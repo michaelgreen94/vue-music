@@ -14,6 +14,7 @@
       <h4>Album: {{song.collectionName}}</h4>
       <img :src="song.artworkUrl60" alt="">
       <audio controls :src="song.previewUrl" />
+      <button @click="deleteFromPlaylist(song._id)">Delete</button>
     </div>
     <div class="all-playlists" v-for="playlist in playlists">
       <h2>{{playlist.ownerName}}</h2>
@@ -51,6 +52,9 @@
       },
       deletePlaylist(playlistId) {
         this.$store.dispatch('deletePlaylist', playlistId)
+      },
+      deleteFromPlaylist(songId) {
+        this.$store.dispatch('deleteFromPlaylist', songId)
       }
     }
   }
