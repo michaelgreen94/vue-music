@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <div class="header">
-      <img alt="Vue logo" src="../assets/logo.png">
+      <img class="logo" alt="Vue logo" src="../assets/logo.png">
       <form class="form" @submit.prevent="findSongs">
         <input id="search" type="text" placeholder="Search Music" v-model="details">
         <input type="submit">
@@ -54,10 +54,17 @@
   .header {
     width: 100%;
     display: flex;
-    justify-content: space-evenly
+    justify-content: space-between;
+    background-color: slategray;
+    /* padding-bottom: .5rem; */
+    align-items: center;
   }
 
-  .form {
+  /* .form {
     align-self: flex-end
+  } */
+
+  .logo {
+    height: 5vh
   }
 </style>
