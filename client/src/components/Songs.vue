@@ -6,7 +6,7 @@
       <h4>Track: {{song.trackName}}</h4>
       <h4>Album: {{song.collectionName}}</h4>
       <img :src="song.artworkUrl60" alt="">
-      <audio controls :src="song.previewUrl" />
+      <audio controls :src="song.previewUrl" @play="pauseEm(song.previewUrl)" />
       <button @click="addToPlaylist(song)">Add to Playlist</button>
     </div>
   </div>
@@ -32,6 +32,16 @@
       },
       addToPlaylist(song) {
         this.$store.dispatch('addToPlaylist', song)
+      },
+      pauseEm(Url) {
+        let songs = document.getElementsByTagName('audio')
+        for (let i = 0; i < songs.length; i++) {
+          let song = songs[i]
+          console.log(song)
+          if (song.src != Url) {
+            song.pause()
+          }
+        }
       }
     }
   }
@@ -39,8 +49,8 @@
 
 <style>
   .songs {
-    height: 40rem;
-    width: 35rem;
+    height: 35vh;
+    width: 35vw;
     overflow: auto;
     background: linear-gradient(to top, grey, darkgrey, white);
     border-radius: 10px;

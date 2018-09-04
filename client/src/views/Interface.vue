@@ -1,11 +1,12 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <form @submit.prevent="findSongs">
-      <label for="search">What Can I help you Find? </label>
-      <input id="search" type="text" placeholder="Search Music" v-model="details">
-      <input type="submit">
-    </form>
+    <div class="header">
+      <img alt="Vue logo" src="../assets/logo.png">
+      <form class="form" @submit.prevent="findSongs">
+        <input id="search" type="text" placeholder="Search Music" v-model="details">
+        <input type="submit">
+      </form>
+    </div>
     <div class="display">
       <Songs/>
       <playlist/>
@@ -48,5 +49,15 @@
     width: 100%;
     justify-content: space-around;
     display: flex;
+  }
+
+  .header {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly
+  }
+
+  .form {
+    align-self: flex-end
   }
 </style>
