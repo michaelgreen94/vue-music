@@ -18,7 +18,7 @@ export default new Vuex.Store({
   state: {
     song: {},
     songs: [],
-    playlist: {},
+    playlist: { songs: [] },
     playlists: []
   },
   mutations: {
@@ -26,7 +26,7 @@ export default new Vuex.Store({
       state.songs = data
     },
     allPlaylists(state, data) {
-      state.playlists = [data]
+      state.playlists = data
     },
     selectedPlaylist(state, data) {
       state.playlist = data

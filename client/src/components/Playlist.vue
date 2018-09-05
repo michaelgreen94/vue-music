@@ -39,7 +39,7 @@
         return this.$store.state.playlist
       },
       playlists() {
-        return this.$store.state.playlists[0]
+        return this.$store.state.playlists
       }
     },
     methods: {
