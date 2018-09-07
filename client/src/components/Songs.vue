@@ -1,13 +1,11 @@
 <template>
   <div class="songs">
-    <h1>Songs here</h1>
     <div class="song-results" v-for="song in songs">
-      <h4>Artist: {{song.artistName}}</h4>
-      <h4>Track: {{song.trackName}}</h4>
-      <h4>Album: {{song.collectionName}}</h4>
-      <img :src="song.artworkUrl60" alt="">
-      <audio controls :src="song.previewUrl" @play="pauseEm(song.previewUrl)" />
       <button @click="addToPlaylist(song)">Add to Playlist</button>
+      <p class="truncate">{{song.artistName}}</p>
+      <p class="truncate">{{song.trackName}}</p>
+      <p class="truncate">{{song.collectionName}}</p>
+      <audio controls :src="song.previewUrl" @play="pauseEm(song.previewUrl)" />
     </div>
   </div>
 </template>
@@ -49,11 +47,11 @@
 
 <style>
   .songs {
-    height: 35vh;
-    width: 35vw;
+    height: 50%;
+    width: auto;
     overflow: auto;
     background: linear-gradient(to top, grey, darkgrey, white);
-    border-radius: 10px;
+    border-radius: 5px;
   }
 
   ::-webkit-scrollbar {
@@ -70,5 +68,20 @@
     border-radius: 10px;
     background-color: white;
     box-shadow: inset 0 0 6px rgba(0, 0, 0, .3)
+  }
+
+  .song-results {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+    border: 1px solid black;
+  }
+
+  .truncate {
+    width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 </style>
