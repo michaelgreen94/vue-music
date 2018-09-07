@@ -8,8 +8,8 @@
       </form>
     </div>
     <div class="display">
-      <Songs/>
-      <playlist/>
+      <Songs />
+      <playlist />
     </div>
   </div>
 </template>

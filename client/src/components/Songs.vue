@@ -1,12 +1,15 @@
 <template>
   <div class="songs">
     <div class="song-results" v-for="song in songs">
-      <button @click="addToPlaylist(song)">Add to Playlist</button>
+      <i class="addPlayL fas fa-plus-circle" @click="addToPlaylist(song)"></i>
       <p class="truncate">{{song.artistName}}</p>
       <p class="truncate">{{song.trackName}}</p>
       <p class="truncate">{{song.collectionName}}</p>
-      <audio controls :src="song.previewUrl" @play="pauseEm(song.previewUrl)" />
+      <audio class="shrink" controls :src="song.previewUrl" @play="pauseEm(song.previewUrl)" />
     </div>
+    <!-- <div v-else class="no-music">
+      <h1>Oh no you havent searched for music</h1>
+    </div> -->
   </div>
 </template>
 
@@ -48,9 +51,9 @@
 <style>
   .songs {
     height: 50%;
-    width: auto;
+    width: 50%;
     overflow: auto;
-    background: linear-gradient(to top, grey, darkgrey, white);
+    background: linear-gradient(to top, #1db954, #212121, #535353);
     border-radius: 5px;
   }
 
@@ -75,13 +78,27 @@
     flex-direction: row;
     justify-content: space-between;
     text-align: left;
-    border: 1px solid black;
+    border-top: 1px solid black;
+    align-items: center;
+    color: white;
+    margin: 0 5px 0 .5rem;
   }
 
   .truncate {
-    width: 200px;
+    width: 10rem;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+
+  .addPlayL {
+    cursor: pointer;
+    font-size: 1.5rem;
+    padding: 0 .5rem 0 .5rem;
+    color: black
+  }
+
+  .shrink {
+    transform: scale(.8, .7);
   }
 </style>

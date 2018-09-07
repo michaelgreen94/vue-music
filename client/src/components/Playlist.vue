@@ -71,7 +71,17 @@
 </script>
 
 <style>
+  .playlist {
+    height: 100%;
+    background-color: #212121;
+    display: flex;
+    display: inline-block;
+  }
+
   .all-playlists {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
     border: 1px solid black;
     background: linear-gradient(to top, grey, darkgrey, white);
   }
